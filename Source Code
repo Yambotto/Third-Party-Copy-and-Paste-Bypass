@@ -1,0 +1,41 @@
+import keyboard
+import time
+from tkinter import *
+
+window = Tk()
+window.geometry("300x200")
+
+def submittime():
+    global TheTime
+    TheTime = TimeEntry.get()
+
+def submittext():
+    global TheText
+    TheText = CopyPasteEntry.get()
+
+TimeEntry = Entry(window, font=(300))
+
+TimeEntry.pack()
+
+TimeentrySubmit = Button(window, text="Submit Time", command=submittime)
+
+TimeentrySubmit.pack()
+
+CopyPasteEntry = Entry(window, font=(300))
+
+CopyPasteEntry.pack()
+
+CopyPasteEntrySubmit = Button(window, text="Submit Text", command=submittext)
+
+CopyPasteEntrySubmit.pack()
+
+def startcountdown():
+    time.sleep(int(TheTime))
+    keyboard.write(TheText)
+
+button = Button(window,
+                text="Say Text After Countdown",
+                command=startcountdown)
+
+button.pack()
+window.mainloop()
